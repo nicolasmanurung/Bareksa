@@ -8,7 +8,7 @@ This application is submission for Android Engineer Bareksa
     <td>Mobile</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/nick2905/Bareksa/blob/main/assets/tablet.png" width=340 height=480></td>
+    <td><img src="https://github.com/nick2905/Bareksa/blob/main/assets/tablet.PNG" width=340 height=480></td>
     <td><img src="https://github.com/nick2905/Bareksa/blob/main/assets/android.jpg" width=270 height=480></td>
   </tr>
  </table>
