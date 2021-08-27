@@ -2,10 +2,11 @@ package com.excercise.bareksatest.core.data.source.local.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.excercise.bareksatest.core.data.source.local.entity.ChartEntity
 
 @Database(
     entities = [
-
+        ChartEntity::class
     ],
     version = 1,
     exportSchema = false

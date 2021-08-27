@@ -2,14 +2,14 @@ package com.excercise.bareksatest
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.excercise.bareksatest.databinding.ActivityMainBinding
-import com.excercise.bareksatest.ui.main.SectionsPagerAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
+import com.excercise.bareksatest.ui.main.DanaKelolaanFragment
+import com.excercise.bareksatest.ui.main.ImbalHasilFragment
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -17,20 +17,41 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = binding.fab
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        binding.viewPager.adapter = ViewPagerAdapter(this)
+
+        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> {
+                    tab.text = "Imbal Hasil"
+                }
+                1 -> {
+                    tab.text = "Dana Kelolaan"
+                }
+            }
+        }.attach()
+
+        binding.viewPager.isUserInputEnabled = false
+    }
+
+
+
+    class ViewPagerAdapter internal constructor(fragmentActivity: FragmentActivity) :
+        FragmentStateAdapter(fragmentActivity) {
+        override fun createFragment(position: Int): Fragment {
+            when (position) {
+                0 -> return ImbalHasilFragment()
+                1 -> return DanaKelolaanFragment()
+            }
+            return ImbalHasilFragment()
+        }
+
+        override fun getItemCount(): Int {
+            return 2
         }
     }
 }
