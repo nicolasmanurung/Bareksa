@@ -15,7 +15,7 @@ This application is submission for Android Engineer Bareksa
 
 ## Authors
 
-* **Nicolas Manurung** - *Institut Teknologi Del Student* 
+* **Nicolas Manurung**
 * [LinkedIn](https://www.linkedin.com/in/nicolasmanurung/)
 * [Instagram](https://www.instagram.com/nicolasmanurung/)
 
