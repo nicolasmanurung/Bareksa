@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         binding.viewPager.adapter = ViewPagerAdapter(this)
 
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
@@ -37,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.viewPager.isUserInputEnabled = false
     }
-
 
 
     class ViewPagerAdapter internal constructor(fragmentActivity: FragmentActivity) :
