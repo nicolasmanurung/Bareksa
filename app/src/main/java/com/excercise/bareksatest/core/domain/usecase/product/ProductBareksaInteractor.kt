@@ -10,4 +10,10 @@ class ProductBareksaInteractor @Inject constructor(private val bareksaIRepositor
         productTwo: String,
         productThree: String?
     ) = bareksaIRepository.getChartProducts(productOne, productTwo, productThree)
+
+    override fun getMultipleDetailProducts(
+        productOne: String,
+        productTwo: String,
+        productThree: String?
+    ) = bareksaIRepository.getDetailProducts(productOne, productTwo, productThree)
 }

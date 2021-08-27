@@ -89,8 +89,8 @@
                 android:id="@+id/tlFilterChart"
                 style="@style/Theme.Bareksa.TabLayout"
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:tabMode="fixed">
 
                 <com.google.android.material.tabs.TabItem
@@ -135,6 +135,20 @@
                     android:layout_height="wrap_content"
                     android:text="All" />
             </com.google.android.material.tabs.TabLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvItemBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvItemData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvItemButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

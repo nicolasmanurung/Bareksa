@@ -4,7 +4,9 @@ import com.excercise.bareksatest.core.data.source.local.LocalDataSource
 import com.excercise.bareksatest.core.data.source.remote.RemoteDataSource
 import com.excercise.bareksatest.core.data.source.remote.network.ApiResponse
 import com.excercise.bareksatest.core.data.source.remote.response.ChartName
+import com.excercise.bareksatest.core.data.source.remote.response.Product
 import com.excercise.bareksatest.core.domain.model.MChart
+import com.excercise.bareksatest.core.domain.model.MDetailProduct
 import com.excercise.bareksatest.core.domain.repository.IBareksaRepository
 import com.excercise.bareksatest.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
@@ -41,4 +43,38 @@ class BareksaRepository @Inject constructor(
             localDataSource.insertListChart(chartList)
         }
     }.asFlow()
+
+    override fun getDetailProducts(
+        productOne: String,
+        productTwo: String,
+        productThree: String?
+    ): Flow<Resource<List<MDetailProduct>>> =
+        object : NetworkBoundResource<List<MDetailProduct>, List<Product>>() {
+            override fun loadFromDB(): Flow<List<MDetailProduct>> {
+                return localDataSource.getMultipleDetailProduct(
+                    productOne,
+                    productTwo,
+                    productThree
+                ).map {
+                    DataMapper.mapProductDetailEntityToDomain(it)
+                }
+            }
+
+            override fun shouldFetch(data: List<MDetailProduct>?): Boolean {
+                return true
+            }
+
+            override suspend fun createCall(): Flow<ApiResponse<List<Product>>> {
+                return remoteDataSource.getMultipleDetailProduct(
+                    productOne,
+                    productTwo,
+                    productThree
+                )
+            }
+
+            override suspend fun saveCallResult(data: List<Product>) {
+                val detailProductList = DataMapper.mapProductDetailResponseToEntities(data)
+                localDataSource.insertListDetailProduct(detailProductList)
+            }
+        }.asFlow()
 }

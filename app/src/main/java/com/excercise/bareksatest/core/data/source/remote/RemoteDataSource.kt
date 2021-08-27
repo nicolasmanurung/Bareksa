@@ -41,10 +41,10 @@ class RemoteDataSource @Inject constructor(private val apiService: BareksaAPISer
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getMultipleDetailChart(
+    suspend fun getMultipleDetailProduct(
         productOne: String,
         productTwo: String,
-        productThree: String
+        productThree: String?
     ): Flow<ApiResponse<List<Product>>> {
         return flow {
             try {

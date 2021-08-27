@@ -16,4 +16,11 @@ class MainViewModel @Inject constructor(
         productThree: String?
     ) = productBareksaUseCase.getAllChartDataProducts(productOne, productTwo, productThree)
         .asLiveData()
+
+    fun getMultipleDetailProducts(
+        productOne: String,
+        productTwo: String,
+        productThree: String?
+    ) = productBareksaUseCase.getMultipleDetailProducts(productOne, productTwo, productThree)
+        .asLiveData()
 }
