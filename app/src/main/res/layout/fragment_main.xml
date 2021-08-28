@@ -136,6 +136,10 @@
                     android:text="All" />
             </com.google.android.material.tabs.TabLayout>
 
+            <include
+                android:id="@+id/lnrShimmerDetail"
+                layout="@layout/shimmer_layout_list" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvItemBanner"
                 android:layout_width="match_parent"
@@ -144,11 +148,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvItemData"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvItemButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
