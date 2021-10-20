@@ -243,8 +243,6 @@ class ImbalHasilFragment : Fragment() {
                     model.growth.toFloat()
                 )
             }
-        Log.d("LASTPRODUCT->", dataProductOne.last().toString())
-        Log.d("LASTDATASET->", dataSetOne.last().toString())
         dataSetTwo =
             dataProductTwo.mapIndexedTo(ArrayList()) { i, model ->
                 Entry(

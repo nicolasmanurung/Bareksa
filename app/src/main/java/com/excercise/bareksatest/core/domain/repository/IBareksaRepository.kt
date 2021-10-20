@@ -6,7 +6,6 @@ import com.excercise.bareksatest.core.domain.model.MDetailProduct
 import kotlinx.coroutines.flow.Flow
 
 interface IBareksaRepository {
-
     fun getChartProducts(
         productOne: String,
         productTwo: String,
