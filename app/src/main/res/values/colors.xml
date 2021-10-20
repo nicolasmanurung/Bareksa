@@ -16,4 +16,5 @@
     <color name="chartTwoColorBackground">#E0DBEB</color>
     <color name="chartThreeColor">#6D98B6</color>
     <color name="chartThreeColorBackground">#E0E8EE</color>
+    <color name="shimmerColor">#CACACA</color>
 </resources>

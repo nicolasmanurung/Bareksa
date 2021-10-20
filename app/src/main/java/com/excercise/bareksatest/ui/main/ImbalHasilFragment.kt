@@ -102,14 +102,16 @@ class ImbalHasilFragment : Fragment() {
         ).observe(viewLifecycleOwner, { response ->
             when (response) {
                 is Resource.Success -> {
+                    hideShimmerDetail()
                     Log.d("DATA->", response.data.toString())
                     response.data?.let { populateDataDetail(it) }
                 }
                 is Resource.Error -> {
+                    hideShimmerDetail()
                     Log.d("ERROR->", response.message.toString())
                 }
                 is Resource.Loading -> {
-
+                    showShimmerDetail()
                 }
             }
         })
@@ -241,8 +243,6 @@ class ImbalHasilFragment : Fragment() {
                     model.growth.toFloat()
                 )
             }
-        Log.d("LASTPRODUCT->", dataProductOne.last().toString())
-        Log.d("LASTDATASET->", dataSetOne.last().toString())
         dataSetTwo =
             dataProductTwo.mapIndexedTo(ArrayList()) { i, model ->
                 Entry(
@@ -439,6 +439,15 @@ class ImbalHasilFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    private fun showShimmerDetail() {
+        binding.lnrShimmerDetail.shimmerDummy.startShimmer()
+    }
+
+    private fun hideShimmerDetail() {
+        binding.lnrShimmerDetail.shimmerDummy.hideShimmer()
+        binding.lnrShimmerDetail.shimmerDummy.visibility = View.GONE
     }
 
     override fun onDestroyView() {
